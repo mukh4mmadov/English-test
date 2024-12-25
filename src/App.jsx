@@ -162,7 +162,7 @@ function App() {
 
   useEffect(() => {
     const shuffledQuestions = shuffle([...initialQuestions]);
-    setQuestions(shuffledQuestions.slice(0, 25)); // Limit to 25 questions
+    setQuestions(shuffledQuestions.slice(0, 25)); 
     setUserAnswers(Array(25).fill(""));
   }, []);
 
