@@ -1,136 +1,157 @@
 import React, { useState, useEffect } from "react";
 
-// Shuffle function to randomize the order of questions
-const shuffle = (array) => {
-  return array.sort(() => Math.random() - 0.5);
-};
+const shuffle = (array) => array.sort(() => Math.random() - 0.5);
 
 const initialQuestions = [
   {
-    question: "What is the capital of France?",
-    options: ["Berlin", "Madrid", "Paris", "Lisbon"],
-    answer: "Paris",
+    question: "What is the plural of 'child'?",
+    options: ["Childs", "Children", "Childes", "Child"],
+    answer: "Children",
   },
   {
-    question: "Which planet is known as the Red Planet?",
-    options: ["Earth", "Mars", "Venus", "Jupiter"],
-    answer: "Mars",
+    question: "What is the past tense of 'go'?",
+    options: ["Goes", "Gone", "Went", "Going"],
+    answer: "Went",
   },
   {
-    question: "Who wrote 'Romeo and Juliet'?",
-    options: ["Shakespeare", "Dickens", "Austen", "Hemingway"],
-    answer: "Shakespeare",
-  },
-  { question: "What is 2 + 2?", options: ["3", "4", "5", "6"], answer: "4" },
-  {
-    question: "What is the largest ocean on Earth?",
-    options: ["Atlantic", "Indian", "Arctic", "Pacific"],
-    answer: "Pacific",
+    question: "Which word is an adjective?",
+    options: ["Run", "Beautiful", "Quickly", "Friendship"],
+    answer: "Beautiful",
   },
   {
-    question: "Which language is primarily spoken in Brazil?",
-    options: ["Spanish", "Portuguese", "French", "English"],
-    answer: "Portuguese",
+    question: "What is the synonym of 'happy'?",
+    options: ["Sad", "Joyful", "Angry", "Scared"],
+    answer: "Joyful",
   },
   {
-    question: "What is the square root of 64?",
-    options: ["6", "7", "8", "9"],
-    answer: "8",
+    question: "Choose the correct article: '___ apple'",
+    options: ["A", "An", "The", "None"],
+    answer: "An",
   },
   {
-    question: "Who painted the Mona Lisa?",
-    options: ["Van Gogh", "Da Vinci", "Picasso", "Rembrandt"],
-    answer: "Da Vinci",
-  },
-  {
-    question: "What is the boiling point of water in Celsius?",
-    options: ["90", "100", "110", "120"],
-    answer: "100",
-  },
-  {
-    question: "Which animal is known as the King of the Jungle?",
-    options: ["Tiger", "Elephant", "Lion", "Cheetah"],
-    answer: "Lion",
-  },
-  {
-    question: "Which continent has the most countries?",
-    options: ["Asia", "Africa", "Europe", "South America"],
-    answer: "Africa",
-  },
-  {
-    question: "What is the chemical symbol for gold?",
-    options: ["Au", "Ag", "Pb", "Fe"],
-    answer: "Au",
-  },
-  {
-    question: "Which year did World War II end?",
-    options: ["1942", "1945", "1948", "1950"],
-    answer: "1945",
-  },
-  {
-    question: "What is the hardest natural substance on Earth?",
-    options: ["Gold", "Iron", "Diamond", "Graphite"],
-    answer: "Diamond",
-  },
-  {
-    question: "Who discovered gravity?",
-    options: ["Einstein", "Newton", "Galileo", "Tesla"],
-    answer: "Newton",
-  },
-  {
-    question: "What is the capital of Japan?",
-    options: ["Seoul", "Beijing", "Tokyo", "Bangkok"],
-    answer: "Tokyo",
-  },
-  {
-    question: "Which gas do plants absorb from the atmosphere?",
-    options: ["Oxygen", "Carbon dioxide", "Nitrogen", "Methane"],
-    answer: "Carbon dioxide",
-  },
-  {
-    question: "Who painted 'Starry Night'?",
-    options: ["Monet", "Van Gogh", "Picasso", "Rembrandt"],
-    answer: "Van Gogh",
-  },
-  {
-    question: "What is the largest desert in the world?",
-    options: ["Sahara", "Arctic", "Gobi", "Kalahari"],
-    answer: "Sahara",
-  },
-  {
-    question: "Which is the smallest country in the world?",
-    options: ["Monaco", "Vatican City", "San Marino", "Liechtenstein"],
-    answer: "Vatican City",
-  },
-  {
-    question: "Who is known as the father of computers?",
+    question: "Which sentence is correct?",
     options: [
-      "Charles Babbage",
-      "Alan Turing",
-      "Ada Lovelace",
-      "John von Neumann",
+      "She don't like it.",
+      "She doesn't like it.",
+      "She no like it.",
+      "She didn't likes it.",
     ],
-    answer: "Charles Babbage",
+    answer: "She doesn't like it.",
   },
   {
-    question: "What is the main ingredient in guacamole?",
-    options: ["Tomato", "Avocado", "Onion", "Pepper"],
-    answer: "Avocado",
+    question: "What does 'library' mean?",
+    options: [
+      "A place to read books",
+      "A place to sleep",
+      "A place to eat",
+      "A place to exercise",
+    ],
+    answer: "A place to read books",
   },
   {
-    question: "Which planet has the most moons?",
-    options: ["Mars", "Jupiter", "Saturn", "Uranus"],
-    answer: "Saturn",
+    question: "What is the opposite of 'big'?",
+    options: ["Large", "Small", "Tiny", "Wide"],
+    answer: "Small",
   },
   {
-    question: "What is the smallest unit of life?",
-    options: ["Atom", "Cell", "Molecule", "Organ"],
-    answer: "Cell",
+    question: "Choose the correct preposition: 'I am good ___ math.'",
+    options: ["In", "At", "On", "With"],
+    answer: "At",
   },
   {
-    question: "What is the longest river in the world?",
-    options: ["Amazon", "Nile", "Yangtze", "Mississippi"],
-    answer: "Nile",
+    question: "Which sentence is in present continuous?",
+    options: ["I am eating.", "I ate.", "I eat.", "I will eat."],
+    answer: "I am eating.",
+  },
+  {
+    question: "What is the meaning of 'quickly'?",
+    options: ["Slowly", "Fast", "Carefully", "Easily"],
+    answer: "Fast",
+  },
+  {
+    question: "What is the opposite of 'love'?",
+    options: ["Hate", "Like", "Adore", "Admire"],
+    answer: "Hate",
+  },
+  {
+    question: "Which is correct?",
+    options: [
+      "He is a engineer.",
+      "He is an engineer.",
+      "He is the engineer.",
+      "He is engineer.",
+    ],
+    answer: "He is an engineer.",
+  },
+  {
+    question: "What is 'they're' a contraction of?",
+    options: ["They were", "They are", "They will", "They is"],
+    answer: "They are",
+  },
+  {
+    question: "What is the past tense of 'eat'?",
+    options: ["Eat", "Eaten", "Ate", "Eating"],
+    answer: "Ate",
+  },
+  {
+    question: "What is the antonym of 'strong'?",
+    options: ["Weak", "Tough", "Hard", "Firm"],
+    answer: "Weak",
+  },
+  {
+    question: "What is the meaning of 'often'?",
+    options: ["Always", "Rarely", "Frequently", "Never"],
+    answer: "Frequently",
+  },
+  {
+    question: "Choose the correct sentence:",
+    options: [
+      "There is a lot of furnitures.",
+      "There are many furniture.",
+      "There is a lot of furniture.",
+      "There are many furnitures.",
+    ],
+    answer: "There is a lot of furniture.",
+  },
+  {
+    question: "Which is correct?",
+    options: [
+      "I have seen him yesterday.",
+      "I saw him yesterday.",
+      "I have saw him yesterday.",
+      "I seen him yesterday.",
+    ],
+    answer: "I saw him yesterday.",
+  },
+  {
+    question: "What is 'you're' a contraction of?",
+    options: ["You were", "You are", "You will", "You is"],
+    answer: "You are",
+  },
+  {
+    question: "What is the past tense of 'swim'?",
+    options: ["Swim", "Swam", "Swum", "Swimming"],
+    answer: "Swam",
+  },
+  {
+    question: "What is the synonym of 'difficult'?",
+    options: ["Easy", "Hard", "Simple", "Effortless"],
+    answer: "Hard",
+  },
+  {
+    question: "Choose the correct spelling:",
+    options: ["Definately", "Definitely", "Defenetly", "Definitly"],
+    answer: "Definitely",
+  },
+  {
+    question: "What is the plural of 'tooth'?",
+    options: ["Tooths", "Teeth", "Toothes", "Tooth"],
+    answer: "Teeth",
+  },
+  {
+    question: "What is the superlative form of 'good'?",
+    options: ["Better", "Best", "Gooder", "Most Good"],
+    answer: "Best",
   },
 ];
 
@@ -138,49 +159,47 @@ function App() {
   const [questions, setQuestions] = useState([]);
   const [userAnswers, setUserAnswers] = useState([]);
   const [result, setResult] = useState(null);
-  const [submitDisabled, setSubmitDisabled] = useState(false);
 
   useEffect(() => {
     const shuffledQuestions = shuffle([...initialQuestions]);
-    setQuestions(shuffledQuestions);
-    setUserAnswers(Array(shuffledQuestions.length).fill(""));
+    setQuestions(shuffledQuestions.slice(0, 25)); // Limit to 25 questions
+    setUserAnswers(Array(25).fill(""));
   }, []);
 
   const handleOptionChange = (index, option) => {
-    if (result) return; // Prevent changing answers after submitting
+    if (result) return;
     const newAnswers = [...userAnswers];
     newAnswers[index] = option;
     setUserAnswers(newAnswers);
   };
 
   const handleSubmit = () => {
-    // Check if all questions are answered
     if (userAnswers.includes("")) {
-      alert("Please answer all questions before submitting.");
-      setSubmitDisabled(true); // Disable submit button until all answers are given
+      alert("Javoblarni bilish uchun avval barcha testlarni ishlang");
       return;
     }
 
-    const correctAnswers = questions.filter(
-      (q, index) => q.answer === userAnswers[index]
-    );
-    const score = correctAnswers.length;
+    const correctAnswers = questions.map((q, index) => ({
+      ...q,
+      userAnswer: userAnswers[index],
+      isCorrect: q.answer === userAnswers[index],
+    }));
 
-    let level = "";
-    if (score <= 8) level = "A1";
-    else if (score <= 14) level = "A2";
-    else if (score <= 20) level = "B1";
-    else level = "B2";
-
-    setResult({ score, level });
+    setResult(correctAnswers);
   };
 
   const handleRefresh = () => {
-    const shuffledQuestions = shuffle([...initialQuestions]);
-    setQuestions(shuffledQuestions);
-    setUserAnswers(Array(shuffledQuestions.length).fill(""));
     setResult(null);
-    setSubmitDisabled(false); // Enable submit button after refresh
+    const shuffledQuestions = shuffle([...initialQuestions]);
+    setQuestions(shuffledQuestions.slice(0, 25));
+    setUserAnswers(Array(25).fill(""));
+  };
+
+  const calculateLevel = (score) => {
+    if (score <= 6) return "A1 (Beginner)";
+    if (score <= 12) return "A2 (Elementary)";
+    if (score <= 18) return "B1 (Intermediate)";
+    return "B2 (Upper-Intermediate)";
   };
 
   return (
@@ -194,15 +213,23 @@ function App() {
             </p>
             <div className="space-y-2">
               {q.options.map((option) => (
-                <label key={option} className="flex items-center space-x-2">
+                <label
+                  key={option}
+                  className={`flex items-center space-x-2 ${
+                    result &&
+                    (q.answer === option
+                      ? "text-green-600"
+                      : userAnswers[index] === option && "text-red-600")
+                  }`}
+                >
                   <input
                     type="radio"
                     name={`question-${index}`}
                     value={option}
                     checked={userAnswers[index] === option}
                     onChange={() => handleOptionChange(index, option)}
-                    className="form-radio h-5 w-5 text-blue-600"
-                    disabled={!!result} // Disable after submit
+                    disabled={!!result}
+                    className="form-radio h-5 w-5"
                   />
                   <span>{option}</span>
                 </label>
@@ -214,11 +241,9 @@ function App() {
           <button
             onClick={handleSubmit}
             className="w-full bg-blue-600 text-white py-2 px-4 rounded-md mt-4 hover:bg-blue-700"
-            disabled={submitDisabled || userAnswers.includes("")} // Disable if some answers are missing or already submitted
           >
             Submit
           </button>
-
           <button
             onClick={handleRefresh}
             className="w-full bg-gray-600 text-white py-2 px-4 rounded-md mt-4 hover:bg-gray-700"
@@ -227,11 +252,15 @@ function App() {
           </button>
         </div>
         {result && (
-          <div className="mt-6 p-4 bg-green-100 border-l-4 border-green-500 text-green-700">
-            <p>
-              Your score: {result.score} / {questions.length}
+          <div className="mt-6">
+            <p className="font-medium mb-2">
+              Your score: {result.filter((r) => r.isCorrect).length} /{" "}
+              {questions.length}
             </p>
-            <p>Your level: {result.level}</p>
+            <p className="text-lg font-bold">
+              Your English Level:{" "}
+              {calculateLevel(result.filter((r) => r.isCorrect).length)}
+            </p>
           </div>
         )}
       </div>
